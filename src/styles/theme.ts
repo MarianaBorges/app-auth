@@ -10,6 +10,6 @@ export const theme = {
     fonts: {
         regular:'Roboto_400Regular',
         medium:'Roboto_500Medium',
-        boldItalic:'Roboto_700Bold_Italic'
+        boldItalic:'Roboto_700Bold'
     }
   }
