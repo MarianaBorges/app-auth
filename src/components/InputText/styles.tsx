@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 40,
         marginBottom: 20,
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.5,
         borderBottomColor: theme.colors.greyText,
         fontFamily: theme.fonts.regular
     },
