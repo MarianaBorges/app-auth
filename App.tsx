@@ -7,8 +7,9 @@ import {
 } from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
 
-import { Login } from './src/screens/Login';
-import { Register } from './src/screens/Register';
+import { AuthProvider } from './src/hooks/auth';
+
+import { Routes } from './src/routes';
 
 export default function App() {
 
@@ -22,7 +23,10 @@ export default function App() {
     return <AppLoading/>
 
   return (
-    <Register/>
+    <AuthProvider>
+        <Routes/>
+    </AuthProvider>
+
   );
 }
 

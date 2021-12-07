@@ -9,8 +9,8 @@ export function Header(){
         <Svg width='100%' height={335}>
             <Path 
                 d='M 0 0
-                    L 400 0
-                    L 400 324
+                    L 450 0
+                    L 450 324
                     Q 280 367 171 226
                     L 0 0
                     Z'

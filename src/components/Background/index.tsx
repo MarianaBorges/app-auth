@@ -14,8 +14,8 @@ function Background(){
 
             <Path 
                 d='M 0 0
-                    L 410 0
-                    L 408 362
+                    L 420 0
+                    L 420 362
                     C 366 454 208 467 149 636
                     Q 83 725 0 640
                     L 0 0
@@ -25,7 +25,7 @@ function Background(){
             />
             <Path 
                 d='M 0 0
-                    L 419 0
+                    L 420 0
                     Q 449 27 427 64
                     C 313 325 90 146 0 350 
                     L 0 0
