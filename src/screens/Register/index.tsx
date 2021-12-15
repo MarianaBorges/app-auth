@@ -25,7 +25,9 @@ export function Register(){
     const { navigate } = useNavigation<RegisterScreenNavigationList>();
 
    return (
-      <ScrollView>
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        >
           <Background/>
           <View style={styles.container}>
                 <InputText 
@@ -37,6 +39,12 @@ export function Register(){
                     placeholder='Email' 
                     style={styles.inputText}
                     placeholderTextColor={theme.colors.white}
+                    />
+                <InputText 
+                    placeholder='Phone' 
+                    style={styles.inputText}
+                    placeholderTextColor={theme.colors.white}
+                    keyboardType='number-pad'
                     />
                 <InputText 
                     placeholder='Password'

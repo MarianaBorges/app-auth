@@ -14,10 +14,10 @@ function Background(){
 
             <Path 
                 d='M 0 0
-                    L 420 0
-                    L 420 362
-                    C 366 454 208 467 149 636
-                    Q 83 725 0 640
+                    L 425 0
+                    L 425 362
+                    C 437 588 208 467 152 677
+                    Q 120 784 0 808
                     L 0 0
                     Z'
                 fill={theme.colors.blue}

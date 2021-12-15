@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       height: 50,
       marginBottom: 20,
       fontFamily: theme.fonts.regular,
-      borderBottomWidth: 0.5,
+      borderBottomWidth: 1,
       color: theme.colors.white, 
       borderBottomColor: theme.colors.white,
     },

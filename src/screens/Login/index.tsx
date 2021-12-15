@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { 
     View, 
     StatusBar,
@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     Text,
     KeyboardAvoidingView,
-    Platform
+    Platform,
+    Alert
  } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -17,6 +18,7 @@ import { InputText } from '../../components/InputText';
 import { Button } from '../../components/Button';
 
 import styles from './styles';
+import { useAuth } from '../../hooks/auth';
 
 type RootStackNavigationList = {
     Register: undefined;
@@ -30,6 +32,17 @@ type LoginScreenNavigationProp = NativeStackNavigationProp<
 export function Login(){
 
     const { navigate } = useNavigation<LoginScreenNavigationProp>();
+    const { signIn } = useAuth();    
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleSignin(){
+        try {
+            await signIn(email, password);
+        } catch (error) {
+            Alert.alert('Opss!', 'Algo deu errado!');
+        }
+    }
 
     return (
         <KeyboardAvoidingView
@@ -46,11 +59,21 @@ export function Login(){
             />
             <Header/>
             <View style={styles.container}>
-                <InputText placeholder='Email'/>
-                <InputText placeholder='Password'/>
+                <InputText 
+                    placeholder='Email'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
+                    />
+                <InputText 
+                    placeholder='Password'
+                    value={password}
+                    onChangeText={text => setPassword(text)}
+                    secureTextEntry={true}
+                    />
+
                 <View style={styles.buttonContent}>
                     <Text style={styles.buttonText}>Sign in</Text>
-                    <Button />
+                    <Button onPress={handleSignin}/>
                 </View>
             </View>
                     
