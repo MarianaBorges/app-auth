@@ -23,6 +23,7 @@ interface UserProps{
 }
 
 interface ContextProps {
+    user: UserProps | null;
     logged: boolean;
     signIn: (email: string, password:string)=>Promise<void>;
     signUp: (email:string, password:string, name:string, phone: string)=>Promise<void>;
@@ -39,6 +40,7 @@ function AuthProvider({children}: AuthPrividerProps){
     async function signIn(email: string, password:string){
         try {
             const request = await api.post('/user/login', {email, password});
+            api.defaults.headers.common['authorization'] = `Bearer ${request.data.token}`;
             setUser(request.data.user);
             setToken(request.data.token);
             await AsyncStorage.setItem('@APP_AUTH:user', JSON.stringify(request.data.user));
@@ -70,6 +72,7 @@ function AuthProvider({children}: AuthPrividerProps){
             const userStorage = await AsyncStorage.getItem('@APP_AUTH:user');
             const tokenStorage = await AsyncStorage.getItem('@APP_AUTH:token');
             if (userStorage && tokenStorage){
+                api.defaults.headers.common['authorization'] = `Bearer ${tokenStorage}`;
                 setUser(JSON.parse(userStorage));
                 setToken(JSON.parse(tokenStorage));
             }
@@ -81,6 +84,7 @@ function AuthProvider({children}: AuthPrividerProps){
     return (
         <AuthContext.Provider value={{
             logged: !!user,
+            user,
             signIn, 
             signUp,
             logout

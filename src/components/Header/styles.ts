@@ -1,9 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+import { theme } from '../../styles/theme';
 
-const styles = StyleSheet.create({
-    container: {
-      
+export const styles = StyleSheet.create({
+    container:{
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
-  });
-  
-  export default styles;
+    header:{
+        flexDirection: 'row',
+    }
+
+})

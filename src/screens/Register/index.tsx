@@ -1,5 +1,11 @@
-import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { 
+    ScrollView, 
+    View, 
+    Text, 
+    TouchableOpacity,
+    Alert 
+} from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -10,6 +16,7 @@ import { Button } from '../../components/Button';
 
 import styles from './styles';
 import { theme } from '../../styles/theme';
+import { useAuth } from '../../hooks/auth';
 
 type RootStackNavigationList = {
     Login: undefined;
@@ -23,6 +30,20 @@ type RegisterScreenNavigationList = NativeStackNavigationProp<
 export function Register(){
 
     const { navigate } = useNavigation<RegisterScreenNavigationList>();
+    const {signUp} = useAuth();
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleRegister() {
+        try {
+            await signUp( email, password, name, phone);
+        } catch (error) {
+            Alert.alert('Opps', `Something wrong! ${error}`);
+        }
+    }
 
    return (
       <ScrollView 
@@ -54,7 +75,7 @@ export function Register(){
                     />
                 <View style={styles.buttonContent}>
                     <Text style={styles.buttonText}>Sign up</Text>
-                    <Button />
+                    <Button onPress={handleRegister}/>
                 </View>
                 <View style={styles.footer}>
                 <TouchableOpacity onPress={()=>{
