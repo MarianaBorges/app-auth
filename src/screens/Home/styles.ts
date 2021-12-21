@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     },
 
     list:{
-      height: '90%',
-    }
+      height: '85%',
+    },
   });
   
   export default styles;
